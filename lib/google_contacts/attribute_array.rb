@@ -5,7 +5,7 @@ class GoogleContacts::AttributeArray < Array
   def rel(value)
     self.select do |attribute|
       begin
-        attribute.rel.eql?(value)
+        attribute.rel.eql?(value) || attribute.rel.end_with?(value)
       rescue NoMethodError => e
         false
       end
