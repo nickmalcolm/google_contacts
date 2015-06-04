@@ -1,7 +1,7 @@
 class GoogleContacts::Contact
 
   # Public: initializes a Contact using Google Contacts API JSON data
-  def initialize(json: {})
+  def initialize(json={})
     @json = json
     @entry = GoogleContacts::Attribute.new(@json["entry"])
   end
