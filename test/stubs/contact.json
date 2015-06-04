@@ -1,0 +1,65 @@
+{
+  "entry": {
+    "category": [
+      {
+        "term": "http://schemas.google.com/contact/2008#contact",
+        "scheme": "http://schemas.google.com/g/2005#kind"
+      }
+    ],
+    "updated": {
+      "$t": "2015-01-22T22:21:46.684Z"
+    },
+    "xmlns": "http://www.w3.org/2005/Atom",
+    "gd$name": {
+      "gd$familyName": {
+        "$t": "Krinklecut"
+      },
+      "gd$givenName": {
+        "$t": "Mike"
+      },
+      "gd$fullName": {
+        "$t": "Mike Krinklecut"
+      }
+    },
+    "title": {
+      "$t": "Mike Krinklecut"
+    },
+    "xmlns$gContact": "http://schemas.google.com/contact/2008",
+    "xmlns$batch": "http://schemas.google.com/gdata/batch",
+    "xmlns$gd": "http://schemas.google.com/g/2005",
+    "link": [
+      {
+        "href": "https://www.google.com/m8/feeds/photos/media/my%20email.com/42lIFeABC",
+        "type": "image/*",
+        "rel": "http://schemas.google.com/contacts/2008/rel#photo"
+      },
+      {
+        "href": "https://www.google.com/m8/feeds/contacts/my%20email.com/full/42lIFeABC",
+        "type": "application/atom+xml",
+        "rel": "self"
+      },
+      {
+        "href": "https://www.google.com/m8/feeds/contacts/my%20email.com/full/42lIFeABC",
+        "type": "application/atom+xml",
+        "rel": "edit"
+      }
+    ],
+    "gd$email": [
+      {
+        "primary": "true",
+        "rel": "http://schemas.google.com/g/2005#other",
+        "address": "krinkle@chippies.com"
+      }
+    ],
+    "gd$etag": "\"ETAGGER123.\"",
+    "app$edited": {
+      "xmlns$app": "http://www.w3.org/2007/app",
+      "$t": "2015-01-22T22:21:46.684Z"
+    },
+    "id": {
+      "$t": "http://www.google.com/m8/feeds/contacts/my%20email.com/base/42lIFeABC"
+    }
+  },
+  "version": "1.0",
+  "encoding": "UTF-8"
+}

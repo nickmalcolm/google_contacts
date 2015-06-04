@@ -1,0 +1,145 @@
+{
+  "entry": {
+    "category": [
+      {
+        "term": "http://schemas.google.com/contact/2008#contact",
+        "scheme": "http://schemas.google.com/g/2005#kind"
+      }
+    ],
+    "updated": {
+      "$t": "2015-06-04T09:31:08.775Z"
+    },
+    "xmlns": "http://www.w3.org/2005/Atom",
+    "gContact$groupMembershipInfo": [
+      {
+        "deleted": "false",
+        "href": "http://www.google.com/m8/feeds/groups/my%20email.com/base/6"
+      }
+    ],
+    "gd$name": {
+      "gd$familyName": {
+        "$t": "Chillybum",
+        "yomi": "Chullybum"
+      },
+      "gd$givenName": {
+        "$t": "Roger",
+        "yomi": "Rodja"
+      },
+      "gd$fullName": {
+        "$t": "Roger Chillybum"
+      }
+    },
+    "gContact$relation": [
+      {
+        "$t": "Nicole Foobary",
+        "rel": "spouse"
+      }
+    ],
+    "title": {
+      "$t": "Roger Chillybum"
+    },
+    "gd$structuredPostalAddress": [
+      {
+        "gd$formattedAddress": {
+          "$t": "23 Giddyup Road, Melonport, Australia"
+        },
+        "gd$country": {
+          "$t": "Australia",
+          "code": "AU"
+        },
+        "gd$street": {
+          "$t": "23 Giddyup Road"
+        },
+        "gd$neighborhood": {
+          "$t": "Melonport"
+        },
+        "rel": "http://schemas.google.com/g/2005#home"
+      },
+      {
+        "rel": "http://schemas.google.com/g/2005#work",
+        "gd$country": {
+          "$t": "New Zealand"
+        },
+        "gd$formattedAddress": {
+          "$t": "132 Halsey Street\nWynyard Quarter, Auckland, Auckland 1010\nNew Zealand"
+        },
+        "gd$city": {
+          "$t": "Auckland"
+        },
+        "gd$street": {
+          "$t": "132 Halsey Street"
+        },
+        "gd$region": {
+          "$t": "Auckland"
+        },
+        "gd$postcode": {
+          "$t": "1010"
+        },
+        "gd$neighborhood": {
+          "$t": "Wynyard Quarter"
+        }
+      }
+    ],
+    "xmlns$gContact": "http://schemas.google.com/contact/2008",
+    "content": {
+      "$t": "Here is a note about Roger"
+    },
+    "xmlns$batch": "http://schemas.google.com/gdata/batch",
+    "xmlns$gd": "http://schemas.google.com/g/2005",
+    "link": [
+      {
+        "href": "https://www.google.com/m8/feeds/photos/media/my%20email.com/123abc456def",
+        "type": "image/*",
+        "rel": "http://schemas.google.com/contacts/2008/rel#photo",
+        "gd$etag": "\"ETAG123321GATE.\""
+      },
+      {
+        "href": "https://www.google.com/m8/feeds/contacts/my%20email.com/full/123abc456def",
+        "type": "application/atom+xml",
+        "rel": "self"
+      },
+      {
+        "href": "https://www.google.com/m8/feeds/contacts/my%20email.com/full/123abc456def",
+        "type": "application/atom+xml",
+        "rel": "edit"
+      }
+    ],
+    "gd$email": [
+      {
+        "primary": "true",
+        "rel": "http://schemas.google.com/g/2005#other",
+        "address": "roger@workplace.com"
+      },
+      {
+        "rel": "http://schemas.google.com/g/2005#home",
+        "address": "roger@homeplage.com"
+      }
+    ],
+    "gd$etag": "\"ETAG123321GATE.\"",
+    "gd$phoneNumber": [
+      {
+        "$t": "210001111",
+        "uri": "tel:+64-21-000-1111",
+        "rel": "http://schemas.google.com/g/2005#mobile"
+      }
+    ],
+    "app$edited": {
+      "xmlns$app": "http://www.w3.org/2007/app",
+      "$t": "2015-06-04T09:31:08.775Z"
+    },
+    "id": {
+      "$t": "http://www.google.com/m8/feeds/contacts/my%20email.com/base/123abc456def"
+    },
+    "gContact$userDefinedField": [
+      {
+        "value": "custom value yo!",
+        "key": "Customer Field Yo!"
+      }
+    ],
+    "gContact$birthday": {
+      "when": "1980-01-01"
+    }
+  },
+  "version": "1.0",
+  "encoding": "UTF-8"
+}
