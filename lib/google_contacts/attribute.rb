@@ -35,7 +35,6 @@ class GoogleContacts::Attribute
 
   # We'll try support any method thrown at the contact by looking for relevant
   # attributes in the JSON
-
   def method_missing(method, *args, &block)
     attr_name = self.class.method_to_attribute_name(method)
 
