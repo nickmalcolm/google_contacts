@@ -17,9 +17,8 @@ class ContactsTest < Minitest::Test
   end
 
   test "fetching a complicated contact" do
-    # Set up client
-    # Stub request to google API
-    contact = GoogleContacts::Contact.find(id: "123abc456def")
+    json = JSON.parse(File.open('test/stubs/complicated_contact.json').read)
+    contact = GoogleContacts::Contact.new(json: json)
 
     assert_equal "Roger", contact.name.given_name.value
     assert_equal "Rodja", contact.name.given_name.yomi

@@ -75,7 +75,8 @@ class GoogleContacts::Attribute
 
     # Wrap the value in an Array / Attribute as necessary
     if value.is_a? Array
-      value = value.collect { |item| GoogleContacts::Attribute.new item }
+      attributes = value.collect { |item| GoogleContacts::Attribute.new item }
+      value = GoogleContacts::AttributeArray.new(attributes)
     elsif value.is_a? Hash
       value = GoogleContacts::Attribute.new value
     end

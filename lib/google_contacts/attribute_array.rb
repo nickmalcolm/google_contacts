@@ -1,11 +1,27 @@
 class GoogleContacts::AttributeArray < Array
 
-  # Public: Attributes often have a rel attribute. This is a helper
-  # to get only values whose rel matches the given value.
+  # Public: Attributes often have a rel attribute.
+  # Returns an array of Attributes whose rel matches the given value.
   def rel(value)
-    self.select {|attribute| attribute.rel.eql?(value)}
-  rescue NoMethodError => e
-    nil
+    self.select do |attribute|
+      begin
+        attribute.rel.eql?(value)
+      rescue NoMethodError => e
+        false
+      end
+    end
+  end
+
+  # Public: Attributes often have a primary attribute.
+  # Returns the first (should be only) Attribute with primary = true
+  def primary
+    self.find do |attribute|
+      begin
+        attribute.primary?
+      rescue NoMethodError => e
+        false
+      end
+    end
   end
 
 end
