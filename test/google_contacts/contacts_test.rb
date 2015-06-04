@@ -40,15 +40,13 @@ class ContactsTest < Minitest::Test
     assert_equal mobile, contact.phone_numbers.first.value
     assert_equal mobile, contact.phone_numbers.rel("mobile").first.value
 
-    expected_custom_field = {
-      "value": "custom value yo!",
-      "key": "Customer Field Yo!"
-    }
-    assert_equal expected_custom_field, contact.user_defined_fields.first
+    custom_field = contact.user_defined_fields.first
+    assert_equal "custom value yo!", custom_field.value
+    assert_equal "Customer Field Yo!", custom_field.key
 
     assert_equal "1980-01-01", contact.birthday.when
 
-    home_addr = contact.structed_postal_addresses.rel("home").first
+    home_addr = contact.structured_postal_addresses.rel("home").first
     expected_addr = "23 Giddyup Road, Melonport, Australia"
     assert_equal expected_addr, home_addr.formatted_address.value
     assert_equal "Australia", home_addr.country.value

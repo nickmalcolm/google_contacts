@@ -30,7 +30,7 @@ class GoogleContacts::Attribute
 
   # Public: returns whatever Google put at "$t"
   def value
-    @json["$t"]
+    @json["value"] || @json["$t"]
   end
 
   # We'll try support any method thrown at the contact by looking for relevant
@@ -51,8 +51,13 @@ class GoogleContacts::Attribute
     elsif (first_match = @json.keys.find {|key| key.split("$").last.eql? attr_name.to_s})
       key = first_match
 
-    # We don't know what this is. Give up
+    # We don't know what this is.
     else
+      # If they're trying to get a boolean, and the attribute doesn't exist,
+      # lets return false. (E.g. primary? for an Attribute without an attr
+      # called primary)
+      return false if booleanize
+      # Otherwise give up
       return super
     end
 
