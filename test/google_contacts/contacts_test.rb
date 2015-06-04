@@ -1,11 +1,10 @@
 require 'minitest_helper'
-
+require 'json'
 class ContactsTest < Minitest::Test
 
   test "fetching a simple contact" do
-    # Set up client
-    # Stub request to google API
-    contact = GoogleContacts::Contact.find(id: "42lIFeABC")
+    json = JSON.parse(File.open('test/stubs/contact.json').read)
+    contact = GoogleContacts::Contact.initialize_from_json(json)
     assert_equal "123abc456def", contact.id
     assert_equal "Mike Krinklecut", contact.name.full_name.value
     assert_equal "Mike Krinklecut", contact.title

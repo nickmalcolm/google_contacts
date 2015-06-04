@@ -1,5 +1,4 @@
-require "google_contacts/version"
-
 module GoogleContacts
-  # Your code goes here...
 end
+require "google_contacts/contact"
+require "google_contacts/version"
