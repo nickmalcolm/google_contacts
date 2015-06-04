@@ -4,11 +4,11 @@ class ContactsTest < Minitest::Test
 
   test "fetching a simple contact" do
     json = JSON.parse(File.open('test/stubs/contact.json').read)
-    contact = GoogleContacts::Contact.initialize_from_json(json)
-    assert_equal "123abc456def", contact.id
+    contact = GoogleContacts::Contact.new(json: json)
+    assert_equal "http://www.google.com/m8/feeds/contacts/my%20email.com/base/42lIFeABC", contact.id.value
     assert_equal "Mike Krinklecut", contact.name.full_name.value
-    assert_equal "Mike Krinklecut", contact.title
-    assert_equal "2015-01-22T22:21:46.684Z", contact.updated
+    assert_equal "Mike Krinklecut", contact.title.value
+    assert_equal "2015-01-22T22:21:46.684Z", contact.updated.value
 
     assert_equal 1, contact.emails.count
     email = contact.emails.first
