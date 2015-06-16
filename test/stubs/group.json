@@ -1,0 +1,45 @@
+{
+  "entry": {
+    "category": [
+      {
+        "term": "http://schemas.google.com/contact/2008#group",
+        "scheme": "http://schemas.google.com/g/2005#kind"
+      }
+    ],
+    "updated": {
+      "$t": "2015-06-05T05:21:28.403Z"
+    },
+    "xmlns": "http://www.w3.org/2005/Atom",
+    "title": {
+      "$t": "This is a group"
+    },
+    "xmlns$gContact": "http://schemas.google.com/contact/2008",
+    "content": {
+      "$t": "This is a group"
+    },
+    "xmlns$batch": "http://schemas.google.com/gdata/batch",
+    "xmlns$gd": "http://schemas.google.com/g/2005",
+    "link": [
+      {
+        "href": "https://www.google.com/m8/feeds/groups/me%40example/full/abc123",
+        "type": "application/atom+xml",
+        "rel": "self"
+      },
+      {
+        "href": "https://www.google.com/m8/feeds/groups/me%40example/full/abc123",
+        "type": "application/atom+xml",
+        "rel": "edit"
+      }
+    ],
+    "gd$etag": "\"SXo7ezVSLit7I2A9XRVQFEULQQw.\"",
+    "app$edited": {
+      "xmlns$app": "http://www.w3.org/2007/app",
+      "$t": "2015-06-05T05:21:28.403Z"
+    },
+    "id": {
+      "$t": "http://www.google.com/m8/feeds/groups/me%40example/base/abc123"
+    }
+  },
+  "version": "1.0",
+  "encoding": "UTF-8"
+}
