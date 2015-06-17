@@ -1,3 +1,4 @@
+require 'uri'
 # Public: a GoogleContact.
 # Should be initialized with a JSON "entry"
 class GoogleContacts::Contact < GoogleContacts::Attribute
@@ -16,6 +17,25 @@ class GoogleContacts::Contact < GoogleContacts::Attribute
         nil                             #   nil
       end                               # end
     RUBY
+  end
+
+  def save
+    save!
+    # rescue some exceptions
+  end
+
+  def save!
+    if exists?
+      edit_endpoint = URI.parse(links.rel("edit").first.href).path
+      GoogleContacts::Account.service.put(edit_endpoint, body: {entry: json})
+    else
+      new_endpoint = "/m8/feeds/contacts/default/full"
+      GoogleContacts::Account.service.post(new_endpoint, body: {entry: json})
+    end
+  end
+
+  def exists?
+    # HEAD request
   end
 
 end

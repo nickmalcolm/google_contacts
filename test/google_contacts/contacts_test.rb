@@ -75,4 +75,31 @@ class ContactsTest < Minitest::Test
     end
   end
 
+  test "can save an existing contact" do
+    service = stub()
+    GoogleContacts::Account.service = service
+    json = JSON.parse(File.open('test/stubs/contact.json').read)["entry"]
+    contact = GoogleContacts::Contact.new(json)
+
+    contact.stubs("exists?" => true)
+    service.expects(:put).with(
+      "/m8/feeds/contacts/my%20email.com/full/42lIFeABC",
+      body: {entry: json}
+    )
+    contact.save
+  end
+
+  test "can save a new contact" do
+    service = stub()
+    GoogleContacts::Account.service = service
+    contact = GoogleContacts::Contact.new({})
+
+    contact.stubs("exists?" => false)
+    service.expects(:post).with(
+      "/m8/feeds/contacts/default/full",
+      body: {entry: {}}
+    )
+    contact.save
+  end
+
 end

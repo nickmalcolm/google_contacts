@@ -6,6 +6,10 @@ class GoogleContacts::Account
 
   attr_accessor :email, :connection
 
+  class << self
+    attr_accessor :service
+  end
+
   def initialize(options={})
     self.email = options[:email] || "default"
     self.connection = Faraday.new(url: GOOGLE_DOMAIN) do |faraday|
