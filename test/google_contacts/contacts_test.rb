@@ -53,4 +53,11 @@ class ContactsTest < Minitest::Test
     assert_equal "AU", home_addr.country.code
   end
 
+  test "can save a contact" do
+    json = JSON.parse(File.open('test/stubs/contact.json').read)
+    contact = GoogleContacts::Contact.new(json)
+    GoogleContacts::API.any_instance.expects(:post).with(json)
+    contact.save
+  end
+
 end
