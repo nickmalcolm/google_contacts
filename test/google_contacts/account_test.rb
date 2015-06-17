@@ -33,5 +33,13 @@ class AccountTest < Minitest::Test
     # assert_equal [], @account.groups.find("abc123")
   end
 
+  test "can get a group's contacts" do
+    expected = [GoogleContacts::Contact.new({"foo" => "bar"})]
+    @stubs.get('/m8/feeds/contacts/default/full?alt=json&group=a-group') do |env|
+      [ 200, {}, '{"entry" : [{"foo" : "bar"}]}' ]
+    end
+    assert_equal expected, @account.contacts.where(group: "a-group")
+  end
+
 
 end

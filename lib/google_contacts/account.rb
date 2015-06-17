@@ -19,8 +19,8 @@ class GoogleContacts::Account
     ContactsCollectionProxy.new(self)
   end
 
-  def get(path)
-    connection.get path, {alt: "json"}
+  def get(path, params={})
+    connection.get path, params.merge({alt: "json"})
   end
 
 end
@@ -31,6 +31,8 @@ class CollectionProxy
     self.account = account
   end
   def all
+  end
+  def where(params={})
   end
   def find(id)
   end
@@ -43,5 +45,12 @@ class ContactsCollectionProxy < CollectionProxy
     response = account.get "/m8/feeds/contacts/default/full/#{id}"
     json = JSON.parse(response.body)
     GoogleContacts::Contact.new(json["entry"])
+  end
+  def where(params={})
+    response = account.get "/m8/feeds/contacts/default/full", params
+    json = JSON.parse(response.body)
+    json["entry"].collect do |entry|
+      GoogleContacts::Contact.new(entry)
+    end
   end
 end
