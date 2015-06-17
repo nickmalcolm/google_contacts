@@ -6,6 +6,17 @@
         "scheme": "http://schemas.google.com/g/2005#kind"
       }
     ],
+    "gd$organization": [
+      {
+        "gd$orgTitle": {
+          "$t": "CEO"
+        },
+        "gd$orgName": {
+          "$t": "CompyPants Ltd"
+        },
+        "rel": "http://schemas.google.com/g/2005#other"
+      }
+    ],
     "updated": {
       "$t": "2015-06-04T09:31:08.775Z"
     },
@@ -38,6 +49,13 @@
     "title": {
       "$t": "Roger Chillybum"
     },
+    "gd$im": [
+      {
+        "protocol": "http://schemas.google.com/g/2005#SKYPE",
+        "rel": "http://schemas.google.com/g/2005#other",
+        "address": "skype@compypants.com"
+      }
+    ],
     "gd$structuredPostalAddress": [
       {
         "gd$formattedAddress": {
@@ -88,6 +106,11 @@
     "xmlns$gd": "http://schemas.google.com/g/2005",
     "link": [
       {
+        "href": "https://www.google.com/m8/feeds/photos/media/nick%40revert.io/123abc456def/4ik0BEWeckEt_3QYgo3bWg",
+        "type": "image/*",
+        "rel": "http://schemas.google.com/contacts/2008/rel#edit-photo"
+      },
+      {
         "href": "https://www.google.com/m8/feeds/photos/media/my%20email.com/123abc456def",
         "type": "image/*",
         "rel": "http://schemas.google.com/contacts/2008/rel#photo",
@@ -113,6 +136,10 @@
       {
         "rel": "http://schemas.google.com/g/2005#home",
         "address": "roger@homeplace.com"
+      },
+      {
+        "label": "Custom Here",
+        "address": "custom@customplace.com"
       }
     ],
     "gd$etag": "\"ETAG123321GATE.\"",
