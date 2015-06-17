@@ -53,4 +53,26 @@ class ContactsTest < Minitest::Test
     assert_equal "AU", home_addr.country.code
   end
 
+  # When an attribute isn't set, it won't be returned in the JSON at all.
+  # These should return nil instead of raising NoMethodErrors
+  test "usual attributes return nil for an empty contact" do
+    contact = GoogleContacts::Contact.new({})
+
+    methods = %w(title emails name deleted name organization phone_numbers
+      structured_postal_addresses postal_address where content
+      user_defined_fields birthday relation)
+
+    methods.each do |method|
+      assert_nil contact.send(method), "#{method} should return nil"
+    end
+  end
+
+  test "unknown attributes raise NoMethodError" do
+    contact = GoogleContacts::Contact.new({})
+
+    assert_raises NoMethodError do
+      contact.foobar
+    end
+  end
+
 end
