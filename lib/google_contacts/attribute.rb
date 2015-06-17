@@ -24,13 +24,19 @@ require 'active_support/inflector'
 #
 class GoogleContacts::Attribute
 
+  attr_accessor :json
+
   def initialize(json)
-    @json = json
+    self.json = json
+  end
+
+  def ==(contact)
+    json.eql? contact.json rescue false
   end
 
   # Public: returns whatever Google put at "$t"
   def value
-    @json["value"] || @json["$t"]
+    json["value"] || json["$t"]
   end
 
   # We'll try support any method thrown at the contact by looking for relevant
@@ -45,10 +51,10 @@ class GoogleContacts::Attribute
     end
 
     # First, let's look for an attribute exactly named `method`
-    if @json.has_key?(attr_name)
+    if json.has_key?(attr_name)
       key = attr_name
     # It might be prefixed with something and delimited with $
-    elsif (first_match = @json.keys.find {|key| key.split("$").last.eql? attr_name.to_s})
+    elsif (first_match = json.keys.find {|key| key.split("$").last.eql? attr_name.to_s})
       key = first_match
 
     # We don't know what this is.
@@ -76,7 +82,7 @@ class GoogleContacts::Attribute
   #   A Hash becomes an Array
   #   Anything else stays as is (can be booleanized)
   def nice_value_at_key(key, booleanize: false)
-    value = @json[key]
+    value = json[key]
 
     # Wrap the value in an Array / Attribute as necessary
     if value.is_a? Array

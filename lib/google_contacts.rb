@@ -1,5 +1,6 @@
 module GoogleContacts
 end
+require "google_contacts/account"
 require "google_contacts/attribute"
 require "google_contacts/attribute_array"
 require "google_contacts/contact"
