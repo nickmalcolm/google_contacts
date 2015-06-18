@@ -53,8 +53,9 @@ class AccountTest < Minitest::Test
 
   test "can get a groups contacts" do
     group = GoogleContacts::Group.new({"foo" => "bar"})
+    group.expects(:id).returns("a-group")
     contacts = [stub()]
-    ContactsCollectionProxy.any_instance.expects(:where).with(group: "a-group").returns(contacts)
+    CollectionProxy.any_instance.expects(:where).with(group: "a-group").returns(contacts)
     assert_equal contacts, group.contacts.all
   end
 
