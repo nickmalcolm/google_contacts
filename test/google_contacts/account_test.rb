@@ -4,7 +4,7 @@ class AccountTest < Minitest::Test
 
   def setup
     @account_id = "foo@bar.com"
-    @account = GoogleContacts::Account.new(email: @account_id)
+    @account = GoogleContacts::Account.initialize_service(email: @account_id)
     @stubs = Faraday::Adapter::Test::Stubs.new
     @account.connection = Faraday.new do |builder|
       builder.adapter :test, @stubs
