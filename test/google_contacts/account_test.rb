@@ -12,6 +12,13 @@ class AccountTest < Minitest::Test
 
   end
 
+  test "can initialize a singleton account" do
+    GoogleContacts::Account.initialize_service(email: @account_id)
+    service = GoogleContacts::Account.service
+    assert service.is_a? GoogleContacts::Account
+    assert_equal @account_id, service.email
+  end
+
   test "can get a single contact" do
     expected = GoogleContacts::Contact.new({"foo" => "bar"})
     @stubs.get('/m8/feeds/contacts/default/full/a-contact?alt=json') do |env|

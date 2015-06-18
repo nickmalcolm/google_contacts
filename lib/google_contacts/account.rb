@@ -8,6 +8,10 @@ class GoogleContacts::Account
 
   class << self
     attr_accessor :service
+
+    def initialize_service(options={})
+      self.service = new(options)
+    end
   end
 
   def initialize(options={})
