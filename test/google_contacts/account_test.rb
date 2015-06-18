@@ -12,11 +12,6 @@ class AccountTest < Minitest::Test
 
   end
 
-  test "can get a collection of contacts" do
-    # GoogleContacts::API.expects(:get).with()
-    # assert_equal [], @account.contacts.all
-  end
-
   test "can get a single contact" do
     expected = GoogleContacts::Contact.new({"foo" => "bar"})
     @stubs.get('/m8/feeds/contacts/default/full/a-contact?alt=json') do |env|
@@ -39,6 +34,12 @@ class AccountTest < Minitest::Test
       [ 200, {}, '{"entry" : [{"foo" : "bar"}]}' ]
     end
     assert_equal expected, @account.contacts.where(group: "a-group")
+  end
+
+  test "can get all contacts" do
+    contacts = [stub()]
+    ContactsCollectionProxy.any_instance.expects(:where).with().returns(contacts)
+    assert_equal contacts, @account.contacts.all
   end
 
 

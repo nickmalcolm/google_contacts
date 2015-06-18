@@ -43,7 +43,7 @@ class CollectionProxy
 end
 class ContactsCollectionProxy < CollectionProxy
   def all
-    account.get "/m8/feeds/contacts/default/full"
+    where # an empty where query = all :)
   end
   def find(id)
     response = account.get "/m8/feeds/contacts/default/full/#{id}"
