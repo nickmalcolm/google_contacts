@@ -23,6 +23,10 @@ class GoogleContacts::Account
     ContactsCollectionProxy.new(self)
   end
 
+  def groups
+    ContactsCollectionProxy.new(self)
+  end
+
   def get(path, params={})
     connection.get path, params.merge({alt: "json"})
   end
@@ -30,31 +34,37 @@ class GoogleContacts::Account
 end
 
 class CollectionProxy
-  attr_accessor :account
+  attr_accessor :account, :base_path, :object_type
   def initialize(account)
     self.account = account
   end
   def all
+    where # an empty where query = all :)
   end
   def where(params={})
+    response = account.get base_path, params
+    json = JSON.parse(response.body)
+    json["entry"].collect do |entry|
+      object_type.new(entry)
+    end
   end
   def find(id)
+    response = account.get "#{base_path}/#{id}"
+    json = JSON.parse(response.body)
+    object_type.new(json["entry"])
   end
 end
 class ContactsCollectionProxy < CollectionProxy
-  def all
-    where # an empty where query = all :)
+  def initialze
+    super
+    self.base_path = "/m8/feeds/contacts/default/full/"
+    self.object_type = GoogleContacts::Contact
   end
-  def find(id)
-    response = account.get "/m8/feeds/contacts/default/full/#{id}"
-    json = JSON.parse(response.body)
-    GoogleContacts::Contact.new(json["entry"])
-  end
-  def where(params={})
-    response = account.get "/m8/feeds/contacts/default/full", params
-    json = JSON.parse(response.body)
-    json["entry"].collect do |entry|
-      GoogleContacts::Contact.new(entry)
-    end
+end
+class GroupsCollectionProxy < CollectionProxy
+  def initialze
+    super
+    self.base_path = "/m8/feeds/groups/default/full/"
+    self.object_type = GoogleContacts::Group
   end
 end
