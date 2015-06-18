@@ -3,10 +3,7 @@
 class GoogleContacts::Group < GoogleContacts::Attribute
 
   def contacts
-    ContactsCollectionProxy.new(group_id: id)
-  end
-
-  def id
+    ContactsCollectionProxy.new(group_id: id.value)
   end
 
 end
